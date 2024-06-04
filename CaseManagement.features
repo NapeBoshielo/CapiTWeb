@@ -1,0 +1,64 @@
+@CaseManagementSalesForce @regression
+
+Feature: 001_SalesForce_OpportunityManagement
+
+
+
+
+  Scenario Outline: 001_SalesForce_New_Case
+    Given I have logged into Salesforce
+    When i open cases Tab
+    And i click New Button
+    And i enter client Last Name as <Last_Name>
+    And i enter contact Client Name as <Client_Name>
+    And i select case Record Type as <Record_Type>
+    And i enter SA ID <SA_ID>
+    And i click save
+    Then Vaerify succesful creation of case
+
+
+    Examples:
+      | Last_Name | Client_Name | SA_ID | Record_Type         | Scenerio                                       |
+      |           |             |       | Sole Proprietor     | Postive                                        |
+      |           |             |       | Registered Business | Postive                                        |
+      |           |             |       |                     | Negative - No data captured (field validation) |
+      |           |             |       |                     | Neagative-contact_field validation             |
+      |           |             |       |                     | Neagative-Business Type field validation       |
+      |           |             |       |                     | Neagative-ID Type field validation             |
+
+
+  Scenario: 001_SalesForce_New_Case closure
+    Given I have logged into Salesforce
+    When I click the Cases Tab
+    And I click the Open Case link
+    And I click Mark as Complete
+    Then Verify case closure
+
+
+  Scenario: 001_SalesForce_Share_Case
+    Given I have logged into Salesforce
+    When I click the Cases Tab
+    And I click the Open Case link
+    And I click Sharing
+    And I enter the user to share with
+    Then Verify case sharing
+
+  Scenario:001_SalesForce_follow_Case
+    Given I have logged into Salesforce
+    When I click the Cases Tab
+    And I click the Open Case link
+    Then Verify following the case
+
+  Scenario: 001_SalesForce_clone_Case
+    Given I have logged into Salesforce
+    When I click the Cases Tab
+    And I click the Open Case link
+    Then Verify case cloning
+
+  Scenario: 001_SalesForce_change_Case
+    Given I have logged into Salesforce
+    When I click the Cases Tab
+    And I click the Open Case link
+    Then Verify changing the case
+
+

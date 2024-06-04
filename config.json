@@ -1,0 +1,25 @@
+{
+  "Environment": {
+    "TestName": "Sales Force Lead Form",
+    "TestDataPath": "",
+    "TestURL": "https://capitec--int.sandbox.my.site.com/CapitecBusinessFeedback/s/login/?ec=302&startURL=%2FCapitecBusinessFeedback%2Fs%2F"
+  },
+
+  "Report": {
+    "ProjectName": "Sales Force",
+    "TrendsPath": "C:\\Users\\CP364844\\IdeaProjects\\SalesForce\\src\\test\\trends\\cucumber_trends.json",
+    "BuildName": "Test1",
+    "TrendsLimit": "5"
+  },
+
+  "Configuration": {
+    "Server" : "",
+    "Port" : "",
+    "DatabaseName": "",
+    "Username" : "",
+    "Password" : ""
+  }
+
+
+
+}

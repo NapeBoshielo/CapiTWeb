@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search Customer" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">apigwtst01.mercantile.co.za</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">bb-prodsvc-customer/profile/v1/searchcustomer?idType=Company&amp;idNumber=2011/105143/23</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Customer Individual" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;: {&#xd;
+        &quot;transactionId&quot;: &quot;a08db20b-b390-47e3-95b0-98077838cf58&quot;,&#xd;
+        &quot;organization&quot;: &quot;CAPITEC&quot;,&#xd;
+        &quot;userId&quot;: &quot;ESB@System&quot;,&#xd;
+        &quot;systemId&quot;: &quot;ESB&quot;,&#xd;
+        &quot;timestamp&quot;: &quot;2021-05-18T13:12:36.6794734Z&quot;&#xd;
+    },&#xd;
+    &quot;isAssociate&quot;: false,&#xd;
+    &quot;customer&quot;: {&#xd;
+        &quot;individual&quot;: {&#xd;
+            &quot;identifiers&quot;: {&#xd;
+                &quot;identity&quot;: {&#xd;
+                    &quot;idNo&quot;: &quot;990506800087&quot;,&#xd;
+                    &quot;idType&quot;: &quot;RSAID&quot;,&#xd;
+                    &quot;issuePlace&quot;: &quot;Gauteng&quot;&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;title&quot;: &quot;Sir&quot;,&#xd;
+            &quot;gender&quot;: &quot;M&quot;,&#xd;
+            &quot;segmentCode&quot;: &quot;Black&quot;,&#xd;
+            &quot;firstName&quot;: &quot;Wesley&quot;,&#xd;
+            &quot;middleName&quot;: &quot;Reginald&quot;,&#xd;
+            &quot;surname&quot;: &quot;Buck&quot;,&#xd;
+            &quot;dateOfBirth&quot;: &quot;1991-06-16&quot;,&#xd;
+            &quot;placeOfBirth&quot;: &quot;Ghana&quot;,&#xd;
+            &quot;income&quot;: {&#xd;
+                &quot;amount&quot;: 10000,&#xd;
+                &quot;sourceOfIncomeDetail&quot;: &quot;Wages&quot;,&#xd;
+                &quot;frequency&quot;: &quot;Y&quot;,&#xd;
+                &quot;turnOverCash&quot;: &quot;0&quot;&#xd;
+            },&#xd;
+            &quot;occupationCode&quot;: &quot;00120&quot;&#xd;
+        },&#xd;
+        &quot;nationality&quot;: &quot;ZA&quot;,&#xd;
+        &quot;address&quot;: {&#xd;
+            &quot;streetName&quot;: &quot;5 Dion Road&quot;,&#xd;
+            &quot;suburb&quot;: &quot;Strathavon&quot;,&#xd;
+            &quot;city&quot;: &quot;Sandton&quot;,&#xd;
+            &quot;postalCode&quot;: &quot;2055&quot;,&#xd;
+            &quot;countryCode&quot;: &quot;ZA&quot;&#xd;
+        },&#xd;
+        &quot;geoCode&quot;: &quot;Gauteng&quot;,&#xd;
+        &quot;contact&quot;: {&#xd;
+            &quot;mobileNo&quot;: &quot;27716788509&quot;,&#xd;
+            &quot;email&quot;: &quot;wbuck@retrorabbit.co.za&quot;,&#xd;
+            &quot;preferredContact&quot;: {&#xd;
+                &quot;contactNo&quot;: &quot;27737608625&quot;,&#xd;
+                &quot;name&quot;: &quot;Samuel&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;alertRequired&quot;: {&#xd;
+            &quot;notifyMethod&quot;: &quot;SMS&quot;&#xd;
+        },&#xd;
+        &quot;homeBranchNumber&quot;: &quot;190&quot;,&#xd;
+        &quot;customsClientNumber&quot;: &quot;00000000&quot;,&#xd;
+        &quot;thirdPartyAllocatedCustNumber&quot;: &quot;00000000&quot;,&#xd;
+        &quot;treasuryShortName&quot;: &quot;-&quot;&#xd;
+    },&#xd;
+    &quot;onboardingMethod&quot;: &quot;Capitec Retail&quot;,&#xd;
+    &quot;compliance&quot;: {&#xd;
+        &quot;kyc&quot;: {&#xd;
+            &quot;kycFlag&quot;: &quot;true&quot;,&#xd;
+            &quot;kycDate&quot;: &quot;2021-03-16&quot;&#xd;
+        },&#xd;
+        &quot;sarbCode&quot;: &quot;0131&quot;,&#xd;
+        &quot;businessSectorCode&quot;: &quot;00100&quot;,&#xd;
+        &quot;groupCode&quot;: &quot;TR002&quot;,&#xd;
+        &quot;baselCode&quot;: &quot;RET&quot;&#xd;
+    },&#xd;
+    &quot;isTreasuryService&quot;: &quot;false&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">apigwtst01.mercantile.co.za</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/bb-prodsvc-customer/profile/v1/createCustomer</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Customer Organisation" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;header&quot;: {&#xd;
+        &quot;transactionId&quot;: &quot;6b8a6f79-5dbf-497e-b682-ece12990dd91&quot;,&#xd;
+        &quot;systemId&quot;: &quot;30&quot;,&#xd;
+        &quot;organization&quot;: &quot;CAPITEC&quot;,&#xd;
+        &quot;userId&quot;: &quot;ESB@System&quot;&#xd;
+    },&#xd;
+    &quot;isAssociate&quot;: false,&#xd;
+    &quot;customer&quot;: {&#xd;
+        &quot;organisation&quot;: {&#xd;
+            &quot;type&quot;: &quot;CloseCorporation&quot;,&#xd;
+            &quot;identifiers&quot;: {&#xd;
+                &quot;identity&quot;: {&#xd;
+                    &quot;idNo&quot;: &quot;2222/069430/09&quot;,&#xd;
+                    &quot;idType&quot;: &quot;CCRegNo&quot;,&#xd;
+                    &quot;issueDate&quot;: &quot;1900-01-01&quot;,&#xd;
+                    &quot;issuePlace&quot;: &quot;South Africa&quot;,&#xd;
+                    &quot;country&quot;: &quot;ZAF&quot;,&#xd;
+                    &quot;expiryDate&quot;: &quot;9999-12-31&quot;&#xd;
+                },&#xd;
+                &quot;additionalIds&quot;: [&#xd;
+                    {&#xd;
+                        &quot;idNo&quot;: &quot;9054002010&quot;,&#xd;
+                        &quot;idType&quot;: &quot;IncomeTaxNo&quot;,&#xd;
+                        &quot;issuePlace&quot;: &quot;South Africa&quot;&#xd;
+                    }&#xd;
+                ]&#xd;
+            },&#xd;
+            &quot;businessName&quot;: &quot;Mpatapo&quot;,&#xd;
+            &quot;income&quot;: {&#xd;
+                &quot;annualTurnover&quot;: &quot;1000000&quot;,&#xd;
+                &quot;sourceOfIncome&quot;: &quot;01&quot;,&#xd;
+                &quot;sourceOfIncomeDetail&quot;: &quot;-&quot;,&#xd;
+                &quot;turnOverCash&quot;: &quot;30&quot;&#xd;
+            },&#xd;
+            &quot;businessRegAddress&quot;: {&#xd;
+                &quot;streetName&quot;: &quot;5 Dion Road&quot;,&#xd;
+                &quot;suburb&quot;: &quot;Strathavon&quot;,&#xd;
+                &quot;city&quot;: &quot;Sandton&quot;,&#xd;
+                &quot;postalCode&quot;: &quot;2032&quot;,&#xd;
+                &quot;countryCode&quot;: &quot;ZA&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;nationality&quot;: &quot;ZA&quot;,&#xd;
+        &quot;address&quot;: {&#xd;
+            &quot;streetName&quot;: &quot;5 Dion Road&quot;,&#xd;
+            &quot;suburb&quot;: &quot;Strathavon&quot;,&#xd;
+            &quot;city&quot;: &quot;Sandton&quot;,&#xd;
+            &quot;postalCode&quot;: &quot;2032&quot;,&#xd;
+            &quot;countryCode&quot;: &quot;ZA&quot;&#xd;
+        },&#xd;
+        &quot;geoCode&quot;: &quot;Gauteng&quot;,&#xd;
+        &quot;contact&quot;: {&#xd;
+            &quot;homePhoneNo&quot;: &quot;27737608625&quot;,&#xd;
+            &quot;businessPhoneNo&quot;: &quot;27737608625&quot;,&#xd;
+            &quot;mobileNo&quot;: &quot;27737608625&quot;,&#xd;
+            &quot;email&quot;: &quot;skwahene@gmail.com&quot;,&#xd;
+            &quot;preferredContact&quot;: {&#xd;
+                &quot;contactNo&quot;: &quot;27120000000&quot;,&#xd;
+                &quot;name&quot;: &quot;-&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;alertRequired&quot;: {&#xd;
+            &quot;notifyMethod&quot;: &quot;SMS&quot;&#xd;
+        },&#xd;
+        &quot;homeBranchNumber&quot;: &quot;190&quot;,&#xd;
+        &quot;customsClientNumber&quot;: &quot;00000000&quot;,&#xd;
+        &quot;thirdPartyAllocatedCustNumber&quot;: &quot;00000000&quot;,&#xd;
+        &quot;treasuryShortName&quot;: &quot;-&quot;&#xd;
+    },&#xd;
+    &quot;onboardingMethod&quot;: &quot;Capitec Retail&quot;,&#xd;
+    &quot;compliance&quot;: {&#xd;
+        &quot;kyc&quot;: {&#xd;
+            &quot;kycFlag&quot;: &quot;true&quot;,&#xd;
+            &quot;kycDate&quot;: &quot;2021-03-16&quot;&#xd;
+        },&#xd;
+        &quot;sarbCode&quot;: &quot;0131&quot;,&#xd;
+        &quot;businessSectorCode&quot;: &quot;9900&quot;,&#xd;
+        &quot;groupCode&quot;: &quot;-&quot;,&#xd;
+        &quot;baselCode&quot;: &quot;RET&quot;&#xd;
+    },&#xd;
+    &quot;isTreasuryService&quot;: &quot;false&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">apigwtst01.mercantile.co.za</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">bb-prodsvc-customer/profile/v1/createCustomer</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlpqUm1ZVE13TlRKak9XVTVNbUl6TWpnek5ESTNZMkl5TW1JeVkyRXpNamRoWmpWaU1qYzBaZz09In0.eyJhdWQiOiJodHRwOlwvXC9vcmcud3NvMi5hcGltZ3RcL2dhdGV3YXkiLCJzdWIiOiJhZG1pbkBjYXJib24uc3VwZXIiLCJhcHBsaWNhdGlvbiI6eyJvd25lciI6ImFkbWluIiwidGllclF1b3RhVHlwZSI6InJlcXVlc3RDb3VudCIsInRpZXIiOiJVbmxpbWl0ZWQiLCJuYW1lIjoiVGVzdCIsImlkIjoyLCJ1dWlkIjpudWxsfSwic2NvcGUiOiJhbV9hcHBsaWNhdGlvbl9zY29wZSBkZWZhdWx0IiwiaXNzIjoiaHR0cHM6XC9cL3dzb2FwdHN0MDEubWVyY2FudGlsZS5jby56YTo5NDUzXC9vYXV0aDJcL3Rva2VuIiwidGllckluZm8iOnsiVW5saW1pdGVkIjp7InRpZXJRdW90YVR5cGUiOiJyZXF1ZXN0Q291bnQiLCJzdG9wT25RdW90YVJlYWNoIjp0cnVlLCJzcGlrZUFycmVzdExpbWl0IjowLCJzcGlrZUFycmVzdFVuaXQiOm51bGx9fSwia2V5dHlwZSI6IlBST0RVQ1RJT04iLCJzdWJzY3JpYmVkQVBJcyI6W3sic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJCU1ZDX0FjY19TdGF0ZW1lbnRFbnF1aXJ5IiwiY29udGV4dCI6IlwvYnN2Y1wvYWNjb3VudFwvc3RhdGVtZW50RW5xdWlyeVwvMSIsInB1Ymxpc2hlciI6ImFkbWluIiwidmVyc2lvbiI6IjEiLCJzdWJzY3JpcHRpb25UaWVyIjoiVW5saW1pdGVkIn0seyJzdWJzY3JpYmVyVGVuYW50RG9tYWluIjoiY2FyYm9uLnN1cGVyIiwibmFtZSI6IkJTVkNfQ3VzdF9FbnF1aXJ5IiwiY29udGV4dCI6IlwvYnN2Y1wvY3VzdFwvZW5xdWlyeVwvMSIsInB1Ymxpc2hlciI6ImFkbWluIiwidmVyc2lvbiI6IjEiLCJzdWJzY3JpcHRpb25UaWVyIjoiVW5saW1pdGVkIn0seyJzdWJzY3JpYmVyVGVuYW50RG9tYWluIjoiY2FyYm9uLnN1cGVyIiwibmFtZSI6IkJTVkNfQ3VzdF9Ob3RpZnkiLCJjb250ZXh0IjoiXC9ic3ZjXC9jdXN0b21lclwvbm90aWZ5XC8xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoiMSIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifSx7InN1YnNjcmliZXJUZW5hbnREb21haW4iOiJjYXJib24uc3VwZXIiLCJuYW1lIjoiQlNWQ19BY2NfQ3JlYXRlIiwiY29udGV4dCI6IlwvYnN2Y1wvYWNjb3VudFwvY3JlYXRlXC8xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoiMSIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifSx7InN1YnNjcmliZXJUZW5hbnREb21haW4iOiJjYXJib24uc3VwZXIiLCJuYW1lIjoiQlNWQ19DdXN0X0NyZWF0ZSIsImNvbnRleHQiOiJcL2JzdmNcL2N1c3RvbWVyXC9jcmVhdGVcLzEiLCJwdWJsaXNoZXIiOiJhZG1pbiIsInZlcnNpb24iOiIxIiwic3Vic2NyaXB0aW9uVGllciI6IlVubGltaXRlZCJ9LHsic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJCU1ZDX0FjY19CYWxhbmNlRW5xdWlyeSIsImNvbnRleHQiOiJcL2JzdmNcL2FjY291bnRcL2JhbGFuY2VFbnF1aXJ5XC8xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoiMSIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifSx7InN1YnNjcmliZXJUZW5hbnREb21haW4iOiJjYXJib24uc3VwZXIiLCJuYW1lIjoiQlNWQ19BY2NfRW5xdWlyeSIsImNvbnRleHQiOiJcL2JzdmNcL2FjY291bnRcL2VucXVpcnlcLzEiLCJwdWJsaXNoZXIiOiJhZG1pbiIsInZlcnNpb24iOiIxIiwic3Vic2NyaXB0aW9uVGllciI6IlVubGltaXRlZCJ9LHsic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJCU1ZDX0tZQyIsImNvbnRleHQiOiJcL2JzdmNcL2t5Y1wvMSIsInB1Ymxpc2hlciI6ImFkbWluIiwidmVyc2lvbiI6IjEiLCJzdWJzY3JpcHRpb25UaWVyIjoiVW5saW1pdGVkIn0seyJzdWJzY3JpYmVyVGVuYW50RG9tYWluIjoiY2FyYm9uLnN1cGVyIiwibmFtZSI6IlJ1bGVzX0ZYIiwiY29udGV4dCI6IlwvcnVsZXNcL2Z4XC8xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoiMSIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifSx7InN1YnNjcmliZXJUZW5hbnREb21haW4iOiJjYXJib24uc3VwZXIiLCJuYW1lIjoiU2VjdXJpdHlfQURfQXV0aGVudGljYXRlIiwiY29udGV4dCI6Ilwvc2VjdXJpdHlcL2FkXC9hdXRoZW50aWNhdGVcLzEiLCJwdWJsaXNoZXIiOiJhZG1pbiIsInZlcnNpb24iOiIxIiwic3Vic2NyaXB0aW9uVGllciI6IlVubGltaXRlZCJ9LHsic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJWYXVsdCIsImNvbnRleHQiOiJcL3ZhdWx0XC8xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoiMSIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifSx7InN1YnNjcmliZXJUZW5hbnREb21haW4iOiJjYXJib24uc3VwZXIiLCJuYW1lIjoiQlNWQ19Mb2FuX0FwcCIsImNvbnRleHQiOiJcL2JzdmNcL2xvYW5cLzEiLCJwdWJsaXNoZXIiOiJhZG1pbiIsInZlcnNpb24iOiIxIiwic3Vic2NyaXB0aW9uVGllciI6IlVubGltaXRlZCJ9LHsic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJCU1ZDX09ib2FyZGluZ19BcHAiLCJjb250ZXh0IjoiXC9ic3ZjXC9vbmJvYXJkXC9hcHBsaWNhdGlvblwvMSIsInB1Ymxpc2hlciI6ImFkbWluIiwidmVyc2lvbiI6IjEiLCJzdWJzY3JpcHRpb25UaWVyIjoiVW5saW1pdGVkIn0seyJzdWJzY3JpYmVyVGVuYW50RG9tYWluIjoiY2FyYm9uLnN1cGVyIiwibmFtZSI6IkRJR0lUQUxfQWRhcHRlciIsImNvbnRleHQiOiJcL2RpZ2l0YWxcL2FkYXB0ZXJcLzEiLCJwdWJsaXNoZXIiOiJhZG1pbiIsInZlcnNpb24iOiIxIiwic3Vic2NyaXB0aW9uVGllciI6IlVubGltaXRlZCJ9LHsic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJNU1ZDX1RoaXJkUGFydHlEYXRhIiwiY29udGV4dCI6IlwvbXN2Y1wvdGhpcmRQYXJ0eVwvMSIsInB1Ymxpc2hlciI6ImFkbWluIiwidmVyc2lvbiI6IjEiLCJzdWJzY3JpcHRpb25UaWVyIjoiVW5saW1pdGVkIn0seyJzdWJzY3JpYmVyVGVuYW50RG9tYWluIjoiY2FyYm9uLnN1cGVyIiwibmFtZSI6IlRFQ0hfTkdBIiwiY29udGV4dCI6IlwvdGVjaFwvbmdhXC8xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoiMSIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifSx7InN1YnNjcmliZXJUZW5hbnREb21haW4iOiJjYXJib24uc3VwZXIiLCJuYW1lIjoiQlNWQ19MZWdhY3lPYm9hcmRpbmdfQXBwIiwiY29udGV4dCI6IlwvYnN2Y1wvbGVnYWN5b25ib2FyZFwvYXBwbGljYXRpb25cLzEiLCJwdWJsaXNoZXIiOiJBZG1pbiIsInZlcnNpb24iOiIxIiwic3Vic2NyaXB0aW9uVGllciI6IlVubGltaXRlZCJ9LHsic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJCQ1NWQ19BQ0NPVU5USU5HIiwiY29udGV4dCI6IlwvYnN2Y1wvYWNjb3VudGluZ1wvMSIsInB1Ymxpc2hlciI6ImFkbWluIiwidmVyc2lvbiI6IjEiLCJzdWJzY3JpcHRpb25UaWVyIjoiVW5saW1pdGVkIn0seyJzdWJzY3JpYmVyVGVuYW50RG9tYWluIjoiY2FyYm9uLnN1cGVyIiwibmFtZSI6IkJDU1ZDX0N1c3RvbWVyIiwiY29udGV4dCI6IlwvYmNzdmNcL2N1c3RvbWVyXC8xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoiMSIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifSx7InN1YnNjcmliZXJUZW5hbnREb21haW4iOiJjYXJib24uc3VwZXIiLCJuYW1lIjoiQkNTVkNfQWNjb3VudCIsImNvbnRleHQiOiJcL2Jjc3ZjXC9hY2NvdW50XC8xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoiMSIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifV0sImNvbnN1bWVyS2V5IjoiRUxxdkg4aFRoZnp4djhoTXJCMWRQV0k4NlJJYSIsImV4cCI6Mzc2Nzg2NTcwMCwiaWF0IjoxNjIwMzgyMDUzLCJqdGkiOiIzMjQyMWZhMS1jNTY4LTRmZDEtOGQwMy0xMzNjMmMzMzA2YTEifQ.M-H_1DzYryMltsYkv3MkeVgAF9GXc0FC_bmqhA45TTX4YDIEjC3Hfvm4Tq2STgvR52yro7gIgwXhFlwD-uZp30QfIrzM02NIPP0JDPfo4rH8CynTYP0f3lSiOHmfKfdQGSXTMK4ZIZiVmZF7uv05DGiqMzNiVd7Aw6T7eii07-aACaStJyK-FoEVLAsmVAHd5ZJywHPVP8B_pB7SccDQi20xEBhYBufR55hiVdtNv4vCuYGhU1851hOxhPZH2yrkCE0AV4JIqJVcn26CZe6N4BapZR0PwiId2kJ3SJFqNDpKcrOBI5TgzgU0YDLTD5TMsASrm5IvXEHto99FklPrsg</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">Application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value"></stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Enquire Customer" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">wsoscprd01.mercantile.co.za</stringProp>
+          <stringProp name="HTTPSampler.port">10109</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">bcsvc_customer/enquirecustomer?cifNumber=12356670&amp;getFinancials=true&amp;getAdditionalIDs=true</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

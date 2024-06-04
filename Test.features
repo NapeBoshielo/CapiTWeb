@@ -1,0 +1,20 @@
+@TestMilestoness @regression
+
+
+Feature: 001_SalesForce_Lead_Management
+
+
+  Scenario Outline: 001_SalesForce_New_Lead_Creation_and_Conversion_SoleProp
+    Given I have Logged into Salesforce with username "napeboshielo@capitecbank.co.za.preprod" and password "CRM@123456"
+    When I open Bankers tab
+    And I click new Lead button
+    And I Select Business Type as "<Business_Type>" with  "<Lead_Source>" and "<Product_interest>"
+    And I select new added Lead
+    And I Mark Status as Contacted
+    And I click convert Lead
+    And I click Go to Leads
+    Then verify that a new Lead is created and converted "<Business_Type>" and "<Product_interest>"
+
+    Examples:
+      | Business_Type   | Last_name | firstName | Email | Phone | Lead_Source         | Product_interest         | Scenario |
+      | Sole Proprietor |           |           |       |       | Assisted Onboarding | Business Current Account | Positive |
